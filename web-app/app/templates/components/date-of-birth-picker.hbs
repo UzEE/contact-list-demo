@@ -1,0 +1,13 @@
+{{#detail-item label="Date of Birth" value=(format-date date format='YYYY/MM/DD') globalEdit=globalEdit isEditMode=isEditMode}}
+
+  {{bootstrap-datepicker
+    value=date
+    autoclose=true
+    endDate=today
+    format='yyyy/mm/dd'
+    class="form-control"
+    placeholder="Enter the Date of Birth"
+    startView=(if date 0 'decade')
+  }}
+
+{{/detail-item}}

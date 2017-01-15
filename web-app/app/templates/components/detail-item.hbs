@@ -1,0 +1,24 @@
+<label class="col-sm-2 control-label">{{label}}</label>
+<div class="col-sm-4">
+{{#if isEditMode}}
+
+    {{yield}}
+
+{{else}}
+
+  <p class="form-control-static">
+    {{uc-words value}}
+    <button type="button" class="btn btn-xs btn-link" {{action "enableEditMode"}} aria-label="Edit" title="Edit {{label}}">
+      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
+    </button>
+  </p>
+
+{{/if}}
+</div>
+
+    {{!--<span class="input-group-btn">
+      <button type="button" class="btn btn-link" {{action "disableEditMode"}} aria-label="Edit" title="Edit {{label}}">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+      </button>
+    </span>--}}
+

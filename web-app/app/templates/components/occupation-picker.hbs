@@ -1,0 +1,15 @@
+{{#detail-item label="Occupation" value=(uc-words occupation) globalEdit=globalEdit isEditMode=isEditMode}}
+  
+  {{#power-select 
+      class="form-control" 
+      options=occupationList 
+      selected=occupation 
+      searchEnabled=false 
+      placeholder="Select an Occupation"
+      onchange=(action (mut occupation)) 
+      as |ocp|
+  }}
+    {{uc-words ocp}}
+  {{/power-select}}
+
+{{/detail-item}}

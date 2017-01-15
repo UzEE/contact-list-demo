@@ -1,0 +1,52 @@
+<section class="contact-card">
+
+  <div class="page-header">
+
+    <div class="btn-group pull-right">
+
+      <button class="btn btn-danger" {{action "deleteContact" model}}>
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove
+      </button>
+
+      {{#if globalEdit}}
+      <button class="btn btn-default" {{action "cancelUpdate"}}>
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+      </button>
+      {{/if}}
+
+      {{#if model.hasDirtyAttributes}}
+      <button class="btn btn-primary" {{action "updateContact" model}} disabled={{unless model.isValidForSaving true}}>
+        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save Contact
+      </button>
+      {{/if}}
+    
+    </div>
+
+    <h2>{{model.displayName}}</h2>
+
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <section class="col-sm-8 col-md-9">
+
+        <form class="form-horizontal">
+
+          {{#detail-item label="Name" value=model.name globalEdit=globalEdit}}
+            {{input type="text" class="form-control" value=model.name}}
+          {{/detail-item}}
+
+          {{occupation-picker occupation=model.occupation globalEdit=globalEdit}}
+          {{date-of-birth-picker date=model.dateOfBirth globalEdit=globalEdit}}
+
+        </form>
+    
+      </section>
+
+    </div>
+  </div>
+
+</section>
+
+{{outlet}}

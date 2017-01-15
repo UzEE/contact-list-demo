@@ -1,0 +1,41 @@
+<section class="contact-card">
+
+  <div class="page-header">
+
+    <div class="btn-group pull-right">
+      <button class="btn btn-default" {{action "cancelCreate"}}>
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+      </button>
+      <button class="btn btn-primary" {{action "createContact" model}} disabled={{unless model.isValidForSaving true}}>
+        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save Contact
+      </button>
+    </div>
+
+    <h2>Add New Contact</h2>
+
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <section class="col-sm-8 col-md-9">
+
+        <form class="form-horizontal">
+
+          {{#detail-item label="Name" value=model.name isEditMode=true}}
+            {{input type="text" class="form-control" value=model.name placeholder="Please enter the Contact Name"}}
+          {{/detail-item}}
+
+          {{occupation-picker occupation=model.occupation isEditMode=true}}
+          {{date-of-birth-picker date=model.dateOfBirth isEditMode=true}}
+        
+        </form>
+    
+      </section>
+
+    </div>
+  </div>
+
+</section>
+
+{{outlet}}
