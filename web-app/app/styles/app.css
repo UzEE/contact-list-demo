@@ -3,6 +3,11 @@ body {
  background: #f2f2f2;
 }
 
+.container-fluid > .navbar-header.pull-right.add-margins {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .sidebar {
   padding: 20px 0;
   position: fixed;
@@ -22,13 +27,13 @@ body {
   background: #428bca;
 }
 
-.contact-card {
+.basic-card {
   background: #fff;
   margin: 15px 0;
   padding: 15px;
   box-shadow: 1px 1px 1px #ddd;
 }
 
-.contact-card .page-header {
+.basic-card .page-header {
   margin: 20px 0;
 }

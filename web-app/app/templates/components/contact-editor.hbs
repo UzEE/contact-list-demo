@@ -1,0 +1,47 @@
+{{#detail-item label="Name" value=model.name isEditMode=true}}
+  {{input type="text" class="form-control" value=model.name placeholder="Please enter the Contact Name"}}
+{{/detail-item}}
+
+{{#detail-item label="Occupation" value=(uc-words model.occupation) isEditMode=true}}
+  
+  {{#power-select 
+      class="form-control" 
+      options=occupationList 
+      selected=model.occupation 
+      searchEnabled=false 
+      placeholder="Select an Occupation"
+      onchange=(action (mut model.occupation)) 
+      as |ocp|
+  }}
+    {{uc-words ocp}}
+  {{/power-select}}
+
+{{/detail-item}}
+
+{{#detail-item label="Date of Birth" value=(format-date model.dateOfBirth format='YYYY/MM/DD') isEditMode=true}}
+
+  {{bootstrap-datepicker
+    value=model.dateOfBirth
+    autoclose=true
+    endDate=today
+    format='yyyy/mm/dd'
+    class="form-control"
+    placeholder="Enter the Date of Birth"
+    startView=(if model.dateOfBirth 0 'decade')
+  }}
+
+{{/detail-item}}
+
+<div class="form-group">
+  <div class="col-sm-offset-3 col-sm-4">
+
+    <button class="btn btn-primary" {{action "saveContact" model}} disabled={{unless model.isValidForSaving true}}>
+      <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> {{buttonTitle}}
+    </button>
+
+    <button class="btn btn-default" {{action "cancelChanges" model}}>
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+    </button>
+  
+  </div>
+</div>

@@ -1,3 +1,25 @@
+{{#basic-card title=title}}
+
+  {{#block-slot 'body'}}
+  <div class="container-fluid">
+    <div class="row">
+
+      <section class="col-sm-9 col-md-9">
+
+        {{contact-editor 
+            model=model 
+            buttonTitle=buttonTitle 
+            onContactSave='onContactSave'
+            onCancel='onCancel'
+        }}
+
+      </section>
+
+    </div>
+  </div>
+  {{/block-slot}}
+
+{{/basic-card}}
 <section class="contact-card">
 
   <div class="page-header">
@@ -24,26 +46,7 @@
 
   </div>
 
-  <div class="container-fluid">
-    <div class="row">
-
-      <section class="col-sm-9 col-md-9">
-
-        <form class="form-horizontal">
-
-          {{#detail-item label="Name" value=model.name isEditMode=true}}
-            {{input type="text" class="form-control" value=model.name placeholder="Please enter the Contact Name"}}
-          {{/detail-item}}
-
-          {{occupation-picker occupation=model.occupation isEditMode=true}}
-          {{date-of-birth-picker date=model.dateOfBirth isEditMode=true}}
-
-        </form>
-
-      </section>
-
-    </div>
-  </div>
+  
 
 </section>
 

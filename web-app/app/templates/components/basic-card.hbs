@@ -1,0 +1,17 @@
+{{!-- Obviously need to expand this template with much better error handling --}}
+{{yield}}
+
+<div class="page-header">
+
+  <div class="pull-right">
+    {{#yield-slot 'action-buttons'}}
+      {{yield}}
+    {{/yield-slot}}
+  </div>
+
+  <h2>{{title}}</h2>
+</div>
+
+{{#yield-slot 'body'}}
+  {{yield}}
+{{/yield-slot}}

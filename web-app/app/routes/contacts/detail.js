@@ -24,7 +24,7 @@ export default Ember.Route.extend({
       }
 
       contact.save().then(() => {
-        controller.set('globalEdit', false);
+        this.controller.set('globalEdit', false);
       });
     },
 
