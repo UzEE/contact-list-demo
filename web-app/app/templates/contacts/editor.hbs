@@ -3,22 +3,31 @@
   <div class="page-header">
 
     <div class="btn-group pull-right">
-      <button class="btn btn-default" {{action "cancelCreate"}}>
+
+      {{#if showDelete}}
+      <button class="btn btn-danger" {{action "deleteContact" model}}>
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove
+      </button>
+      {{/if}}
+
+      <button class="btn btn-default" {{action "cancelEdit" model}}>
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
       </button>
-      <button class="btn btn-primary" {{action "createContact" model}} disabled={{unless model.isValidForSaving true}}>
-        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save Contact
+
+      <button class="btn btn-primary" {{action "saveContact" model}} disabled={{unless model.isValidForSaving true}}>
+        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> {{buttonTitle}}
       </button>
+
     </div>
 
-    <h2>Add New Contact</h2>
+    <h2>{{title}}</h2>
 
   </div>
 
   <div class="container-fluid">
     <div class="row">
 
-      <section class="col-sm-8 col-md-9">
+      <section class="col-sm-9 col-md-9">
 
         <form class="form-horizontal">
 
@@ -28,9 +37,9 @@
 
           {{occupation-picker occupation=model.occupation isEditMode=true}}
           {{date-of-birth-picker date=model.dateOfBirth isEditMode=true}}
-        
+
         </form>
-    
+
       </section>
 
     </div>

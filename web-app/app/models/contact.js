@@ -8,14 +8,18 @@ export default DS.Model.extend({
   dateOfBirth: DS.attr('date'),
   avatarUrl: DS.attr('string'),
 
-  displayName: Ember.computed('name', function () {
+  displayName: Ember.computed('isNameValid', function () {
+    return this.get('isNameValid') ? this.get('name') : '(Unknown Person)';
+  }),
+
+  // a valid name can have any character as long as it's not just whitespace
+  isNameValid: Ember.computed('name', function () {
     
     const name = this.get('name');
 
-    return (typeof name === 'undefined' || name === null || !name.length) ? '(Unknown Person)' : name;
+    return (typeof name === 'undefined' || name === null || !name.trim().length) ? false : true;
   }),
 
-  isNameValid: Ember.computed.gte('name.length', 1),
   isOccupationValid: Ember.computed.gte('occupation.length', 1),
   isDateOfBirthValid: Ember.computed('dateOfBirth', function () {
 
@@ -27,5 +31,5 @@ export default DS.Model.extend({
     return dateOfBirth < new Date();
   }),
 
-  isValidForSaving: Ember.computed.and('isNameValid', 'isOccupationValid', 'isDateOfBirthValid')
+  isValidForSaving: Ember.computed.and('isNameValid', 'isOccupationValid', 'isDateOfBirthValid', 'hasDirtyAttributes')
 });
