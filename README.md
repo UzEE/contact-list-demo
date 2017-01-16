@@ -9,7 +9,7 @@ it from here](https://nodejs.org/en/download/). Once you have Node installed, ru
 ```
 > git clone https://github.com/UzEE/contact-list-demo.git
 > cd contact-list-Demo
-> npm -i g sails bower ember-cli@2.10
+> npm i -g sails bower ember-cli@2.10
 ```
 
 Once the pre-requisites are installed, you need to setup and launch the API server.
