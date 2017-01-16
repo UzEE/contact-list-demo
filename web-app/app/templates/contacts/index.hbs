@@ -1,1 +1,8 @@
-{{outlet}}
+{{#basic-card title="Select a Contact"}}
+
+  {{#block-slot 'body'}}
+  <p>
+    Select a contact from the list on the right pane to view their details here. You can also {{#link-to "contacts.new"}}<b>add a new contact</b>{{/link-to}} to get started.
+  </p>
+  {{/block-slot}}
+{{/basic-card}}

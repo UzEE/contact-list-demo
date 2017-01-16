@@ -18,7 +18,7 @@ body {
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #fff;
+  background: #fff;
   box-shadow: 1px 0px 1px #ddd;
 }
 
@@ -36,4 +36,25 @@ body {
 
 .basic-card .page-header {
   margin: 20px 0;
+}
+
+@media only screen and (max-width: 767px) {
+
+  .sidebar {
+    background: #f2f2f2;
+  }
+
+  .sidebar > ul.nav {
+    background: #fff;
+  }
+
+  .sidebar > ul.nav > li {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .sidebar > ul.nav > li > a {
+    padding: 15px;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 1.2em;
+  }
 }
