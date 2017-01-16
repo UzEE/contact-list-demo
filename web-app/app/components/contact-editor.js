@@ -15,10 +15,14 @@ export default Ember.Component.extend({
   ],
 
   today: new Date(),
+  isEditMode: false,
 
   actions: {
 
     saveContact(contact) {
+
+      // disable edit mode
+      this.set('isEditMode', false);
 
       // if there isn't anything to update, just leave
       if (!contact.get('hasDirtyAttributes')) {
@@ -32,6 +36,9 @@ export default Ember.Component.extend({
     },
 
     cancelChanges(contact) {
+
+      // disable edit mode
+      this.set('isEditMode', false);
 
       // cancel changes and raise cancel event
       if (contact.get('isNew')) {

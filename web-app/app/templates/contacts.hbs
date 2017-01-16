@@ -2,7 +2,13 @@
 
   <ul class="nav nav-sidebar">
   {{#each model as |contact|}}
+
     <li>{{#link-to "contacts.detail" contact}}{{contact.displayName}}{{/link-to}}</li>
+
+    {{else}}
+
+    <li>{{#link-to "contacts.new"}}Add a new Contact...{{/link-to}}</li>
+
   {{/each}}
   </ul>
 </div>

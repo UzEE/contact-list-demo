@@ -10,32 +10,14 @@ export default Ember.Route.extend({
 
     this._super(...arguments);
 
-    controller.set('today', new Date());
-    controller.set('globalEdit', false);
+    controller.set('isEditMode', false);
   },
 
   actions: {
 
-    updateContact(contact) {
-
-      // if there isn't anything to update, just leave
-      if (!contact.get('hasDirtyAttributes')) {
-        return;
-      }
-
-      contact.save().then(() => {
-        this.controller.set('globalEdit', false);
-      });
-    },
-
-    cancelUpdate() {
-
-      this.controller.get('model').rollbackAttributes();
-      this.controller.set('globalEdit', false);
-    },
-
     deleteContact(contact) {
       
+      // TODO: need to replace this with a better modal
       const confirmation = confirm('Are you sure you want to delete the record?');
 
       if (confirmation) {
@@ -43,6 +25,34 @@ export default Ember.Route.extend({
         contact.destroyRecord().then(() => {
           this.transitionTo('contacts');
         });
+      }
+    },
+
+    willTransition(transition) {
+
+      const isEditMode = this.controller.get('isEditMode');
+
+      if (!isEditMode) {
+        return;
+      }
+
+      // check if there are unsaved changes to the model and warn the user
+      if (this.controller.get('model').get('hasDirtyAttributes')) {
+
+        // TODO: need to replace this with a better modal
+        let confirmation = confirm('Are you sure you want to discard your changes?');
+
+        if (confirmation) {
+
+          this.controller.set('isEditMode', false);
+          this.controller.get('model').rollbackAttributes();
+
+        } else {
+          transition.abort();
+        }
+      } else {
+
+        this.controller.set('isEditMode', false);
       }
     }
   }

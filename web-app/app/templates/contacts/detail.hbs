@@ -13,7 +13,7 @@
       <section class="col-sm-3 col-md-3 pull-right">
 
         <div class="thumbnail">
-          <img src="{{model.avatarUrl}}" title={{model.name}} />
+          <img src="{{model.getAvatarUrl}}" title={{model.name}} />
           
         </div>
 
@@ -23,8 +23,8 @@
 
         {{contact-editor 
             model=model 
-            onContactSave='onContactSave'
-            onCancel='onCancel'
+            allowEdit=true
+            isEditMode=isEditMode
         }}
     
       </section>

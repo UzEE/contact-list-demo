@@ -17,7 +17,7 @@ export default DS.Model.extend({
     
     const name = this.get('name');
 
-    return (typeof name === 'undefined' || name === null || !name.trim().length) ? false : true;
+    return !Ember.isEmpty(name);
   }),
 
   isOccupationValid: Ember.computed.gte('occupation.length', 1),
@@ -29,6 +29,33 @@ export default DS.Model.extend({
     // everything else is fine since people can add newborns in their
     // contact lists
     return dateOfBirth < new Date();
+  }),
+
+  hasAvatar: Ember.computed('avatarUrl', function () {
+
+    const url = this.get('avatarUrl');
+    
+    // borrowed from: https://github.com/kevva/url-regex/blob/master/index.js
+    const protocol = '(?:(?:[a-z]+:)?//)';
+    const auth = '(?:\\S+(?::\\S*)?@)?';
+    const host = '(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)';
+    const domain = '(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*';
+    const tld = '(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))\\.?';
+    const port = '(?::\\d{2,5})?';
+    const path = '(?:[/?#][^\\s"]*)?';
+    const regex = `(?:${protocol}|www\\.)${auth}(?:localhost|${host}${domain}${tld})${port}${path}`;
+
+    return (new RegExp(regex, 'ig')).test(url);
+  }),
+
+  getAvatarUrl: Ember.computed('avatarUrl', function () {
+
+    if (this.get('hasAvatar')) {
+      return this.get('avatarUrl');
+    }
+
+    // we are hardcoding the thumbnail size here
+    return `http://api.adorable.io/avatars/480/${this.get('displayName').underscore()}.png`;
   }),
 
   isValidForSaving: Ember.computed.and('isNameValid', 'isOccupationValid', 'isDateOfBirthValid', 'hasDirtyAttributes')
