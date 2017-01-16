@@ -21,10 +21,10 @@ Once the pre-requisites are installed, you need to setup and launch the API serv
 ```
 
 Sails should now be up and running on [http://localhost:1337](http://localhost:1337). 
-Next we need to setup and launch our Ember.js app.
+Next we need to setup and launch our Ember.js app. Start a new terminal session and go
+to the project directory. Then run:
 
 ```
-> cd ..
 > cd web-app
 > npm install 
 > bower install
