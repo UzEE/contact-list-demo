@@ -21,16 +21,11 @@
 
       <section class="col-sm-8 col-md-9">
 
-        <form class="form-horizontal">
-
-          {{#detail-item label="Name" value=model.name}}
-            {{input type="text" class="form-control" value=model.name}}
-          {{/detail-item}}
-
-          {{occupation-picker occupation=model.occupation}}
-          {{date-of-birth-picker date=model.dateOfBirth}}
-
-        </form>
+        {{contact-editor 
+            model=model 
+            onContactSave='onContactSave'
+            onCancel='onCancel'
+        }}
     
       </section>
 

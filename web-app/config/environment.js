@@ -20,6 +20,9 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+
+      // This is where your models will be served from. Expects a JSON API.
+      API_HOST: 'http://localhost:1337'
     }
   };
 

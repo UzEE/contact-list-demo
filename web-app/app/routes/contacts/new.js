@@ -28,33 +28,12 @@ export default Ember.Route.extend({
 
     onCancel(contact) {
 
-      debugger;
-
       if (!contact) {
         this.transitionTo('contacts');
       } else {
         this.transitionTo('contacts.detail', contact.id);
       }
     },
-
-    // saveContact(newContact) {
-
-    //   // if there isn't anything to update, just leave
-    //   if (!newContact.get('hasDirtyAttributes')) {
-    //     return;
-    //   }
-
-    //   newContact.save().then((response) => {
-    //     this.transitionTo('contacts.detail', response.id);
-    //   });
-    // },
-
-    // cancelEdit() {
-
-    //   // cancel changes and just go back to the main screen
-    //   this.controller.get('model').rollbackAttributes();
-    //   this.transitionTo('contacts');
-    // },
 
     willTransition(transition) {
 

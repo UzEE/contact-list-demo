@@ -1,8 +1,27 @@
-{{#detail-item label="Name" value=model.name isEditMode=true}}
-  {{input type="text" class="form-control" value=model.name placeholder="Please enter the Contact Name"}}
+{{!-- name field --}}
+{{#detail-item 
+  label="Name" 
+  value=model.name 
+  isEditMode=isEditMode
+  showEditBtn=allowEdit
+}}
+  
+  {{input 
+    type="text" 
+    class="form-control" 
+    value=model.name 
+    placeholder="Please enter the Contact Name"
+  }}
+
 {{/detail-item}}
 
-{{#detail-item label="Occupation" value=(uc-words model.occupation) isEditMode=true}}
+{{!-- occupation field --}}
+{{#detail-item 
+  label="Occupation" 
+  value=(uc-words model.occupation) 
+  isEditMode=isEditMode
+  showEditBtn=allowEdit
+}}
   
   {{#power-select 
       class="form-control" 
@@ -18,7 +37,13 @@
 
 {{/detail-item}}
 
-{{#detail-item label="Date of Birth" value=(format-date model.dateOfBirth format='YYYY/MM/DD') isEditMode=true}}
+{{!-- date of birth field --}}
+{{#detail-item 
+  label="Date of Birth" 
+  value=(format-date model.dateOfBirth format='YYYY/MM/DD') 
+  isEditMode=isEditMode
+  showEditBtn=allowEdit
+}}
 
   {{bootstrap-datepicker
     value=model.dateOfBirth
@@ -32,11 +57,13 @@
 
 {{/detail-item}}
 
+{{!-- action buttons --}}
+{{#if isEditMode}}
 <div class="form-group">
   <div class="col-sm-offset-3 col-sm-4">
 
     <button class="btn btn-primary" {{action "saveContact" model}} disabled={{unless model.isValidForSaving true}}>
-      <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> {{buttonTitle}}
+      <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> {{if buttonTitle buttonTitle "Update Content"}}
     </button>
 
     <button class="btn btn-default" {{action "cancelChanges" model}}>
@@ -45,3 +72,4 @@
   
   </div>
 </div>
+{{/if}}
