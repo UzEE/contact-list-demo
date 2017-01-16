@@ -32,13 +32,22 @@ to the project directory. Then run:
 ```
 
 The Ember.js will be up and running at [http://localhost:4200](http://localhost:4200) by
-default. If you need to build the app, run:
+default. 
+
+## Building for Deployment
+
+If you need to build the app to deploy on a web server, you'll need to run the following 
+in `%project_dir%/web-app`:
 
 ```
 > ember build -prod
 ```
 
-Ember will place the build output in the `/dist ` sub-directory. You may want to change 
+Ember will place the build output in the `/dist ` sub-directory. 
+
+### Changing default API Host
+
+You may want to change 
 the default API host name if your deployment machine would be running the server on another
 URL. You can do that in your `config/environment.js` file.
 
