@@ -17,7 +17,7 @@ export default DS.Model.extend({
     
     const name = this.get('name');
 
-    return !Ember.isEmpty(name);
+    return !Ember.isEmpty(name) && name.trim().length;
   }),
 
   isOccupationValid: Ember.computed.gte('occupation.length', 1),
