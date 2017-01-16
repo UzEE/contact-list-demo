@@ -1,0 +1,23 @@
+{{#basic-card title="Add New Contact"}}
+
+  {{#block-slot 'body'}}
+  <div class="container-fluid xs-container">
+    <div class="row">
+
+      <section class="col-xs-12 col-sm-9 col-md-9">
+
+        {{contact-editor 
+            model=model 
+            buttonTitle="Add Contact"
+            isEditMode=true
+            onContactSave='onContactSave'
+            onCancel='onCancel'
+        }}
+
+      </section>
+
+    </div>
+  </div>
+  {{/block-slot}}
+
+{{/basic-card}}

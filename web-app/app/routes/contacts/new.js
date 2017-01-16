@@ -6,20 +6,6 @@ export default Ember.Route.extend({
     return this.get('store').createRecord('contact');
   },
 
-  setupController(controller, model) {
-    
-    this._super(controller, model);
-
-    controller.set('title', 'Add New Contact');
-    controller.set('buttonTitle', 'Add Contact');
-    controller.set('showDelete', false);
-  },
-
-  // use the shared template for both .new and .edit routes
-  renderTemplate() {
-    this.render('contacts/editor');
-  },
-
   actions: {
 
     onContactSave(contact) {

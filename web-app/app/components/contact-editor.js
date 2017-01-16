@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  
   classNames: ['form-horizontal'],
 
   // hardcode the occupation list for now until we find a better way to share
