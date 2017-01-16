@@ -2,15 +2,15 @@
 
   {{#block-slot 'action-buttons'}}
   <button class="btn btn-danger" {{action "deleteContact" model}}>
-    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove
+    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> <span class="text">Remove</span>
   </button>
   {{/block-slot}}
 
   {{#block-slot 'body'}}
-  <div class="container-fluid">
+  <div class="container-fluid xs-container">
     <div class="row">
 
-      <section class="col-sm-4 col-md-3 pull-right">
+      <section class="col-xs-12 col-sm-4 col-md-3 pull-right">
 
         <div class="thumbnail">
           <img src="{{model.getAvatarUrl}}" title={{model.name}} />
@@ -19,7 +19,7 @@
 
       </section>
 
-      <section class="col-sm-8 col-md-9">
+      <section class="col-xs-12 col-sm-8 col-md-9">
 
         {{contact-editor 
             model=model 

@@ -29,7 +29,7 @@ body {
 
 .basic-card {
   background: #fff;
-  margin: 15px 0;
+  margin: 15px;
   padding: 15px;
   box-shadow: 1px 1px 1px #ddd;
 }
@@ -56,5 +56,29 @@ body {
     padding: 15px;
     color: rgba(0, 0, 0, 0.85);
     font-size: 1.2em;
+  }
+
+  .container-fluid.xs-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .basic-card {
+    margin: 0;
+  }
+
+  .basic-card .page-header {
+    margin-top: 0;
+  }
+
+  .basic-card .page-header h2 {
+    font-size: 1.5em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+  }
+
+  .basic-card .page-header .btn > .text {
+    display: none;
   }
 }
