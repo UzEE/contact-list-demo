@@ -21,3 +21,22 @@
   {{/block-slot}}
 
 {{/basic-card}}
+
+{{!-- modal to handle transition confirmation --}}
+{{#bs-modal-simple
+  open=transitionModal
+  title="Leave with Adding?"
+  closeTitle="No"
+  submitTitle="Yes"
+  closeButton=false
+  keyboard=false
+  backdropClose=false
+  onSubmit=(action continueTransition)
+  onHidden=(action (mut transitionModal) false)
+}}
+  <p>
+    <big>
+      You haven't saved your contact yet. Do you want to discard it?
+    </big>
+  </p>
+{{/bs-modal-simple}}

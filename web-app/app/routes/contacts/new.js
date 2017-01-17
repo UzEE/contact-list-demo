@@ -6,6 +6,22 @@ export default Ember.Route.extend({
     return this.get('store').createRecord('contact');
   },
 
+  setupController(controller, model) {
+
+    this._super(...arguments);
+
+    controller.set('transitionModal', false);
+    controller.set('continueTransition', () => {
+
+      const transition = controller.get('transition');
+
+      this.controller.set('transitionModal', false);
+      controller.get('model').rollbackAttributes();
+
+      transition.retry();
+    });
+  },
+
   actions: {
 
     onContactSave(contact) {
@@ -28,16 +44,9 @@ export default Ember.Route.extend({
       // check if there are unsaved changes to the model and warn the user
       if (model.get('hasDirtyAttributes')) {
 
-        // TODO: need to replace this with a better modal
-        let confirmation = confirm('Are you sure you want to continue without adding your contact?');
-
-        if (confirmation) {
-
-          this.controller.get('model').rollbackAttributes();
-
-        } else {
-          transition.abort();
-        }
+        this.controller.set('transitionModal', true);
+        this.controller.set('transition', transition);
+        transition.abort();
       }
     }
   }
