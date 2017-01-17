@@ -2,12 +2,12 @@
 
 <div class="caption text-center">
   <a href="" {{action (mut uploadModal) true}}><u>Change Picture</u></a>
-  {{#if model.hasAvatar}}or <a href="" {{action (mut confirmRemove) true}} class="text-danger"><u>Remove</u></a>{{/if}}
+  {{#if model.hasAvatar}}or <a href="" {{action (mut confirmRemoveModal) true}} class="text-danger"><u>Remove</u></a>{{/if}}
 </div>
 
 {{!-- modal to handle removal confirmation --}}
 {{#bs-modal-simple
-  open=confirmRemove
+  open=confirmRemoveModal
   title="Remove your Picture?"
   closeTitle="No"
   submitTitle="Yes"
@@ -15,6 +15,7 @@
   keyboard=false
   backdropClose=false
   onSubmit=(action "removePicture" model)
+  onHidden=(action (mut confirmRemoveModal) false)
 }}
   <p>
     <big>

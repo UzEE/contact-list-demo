@@ -19,7 +19,7 @@ export default Ember.Component.extend({
       model.set('avatarUrl', null);
 
       model.save().then(() => {
-        this.set('confirmRemove', false);
+        this.set('confirmRemoveModal', false);
       });
     },
 

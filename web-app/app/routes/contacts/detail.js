@@ -18,6 +18,7 @@ export default Ember.Route.extend({
       contact.destroyRecord().then(() => {
 
         controller.set('confirmRemove', false);
+        controller.set('confirmRemoveModal', false);
         this.transitionTo('contacts');
       });
     });
