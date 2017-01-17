@@ -1,0 +1,26 @@
+<img src="{{model.getAvatarUrl}}" title={{model.name}} class="img-rounded"/>
+
+<div class="caption text-center">
+  <a href="" {{action "changePicture"}}><u>Change Picture</u></a> or 
+  <a href="" {{action (mut confirmRemove) true}} class="text-danger"><u>Remove</u></a>
+</div>
+
+{{#bs-modal-simple
+    open=confirmRemove
+    title="Remove your Picture?"
+    closeTitle="No"
+    submitTitle="Yes"
+    size=""
+    closeButton=false
+    fade=true
+    backdrop=true
+    backdropClose=false
+    onSubmit=(action "removePicture" model)
+    renderInPlace=true}}
+    <p>
+      <big>
+        If you remove your profile picture, we will delete the photo 
+        and replace it with a randomly generated character.
+      </big>
+    </p>
+{{/bs-modal-simple}}
