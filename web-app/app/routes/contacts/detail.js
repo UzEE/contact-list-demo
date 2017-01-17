@@ -11,22 +11,30 @@ export default Ember.Route.extend({
     this._super(...arguments);
 
     controller.set('isEditMode', false);
+    controller.set('transitionModal', false);
+
+    controller.set('deleteContact', (contact) => {
+
+      contact.destroyRecord().then(() => {
+
+        controller.set('confirmRemove', false);
+        this.transitionTo('contacts');
+      });
+    });
+
+    controller.set('continueTransition', () => {
+
+      const transition = controller.get('transition');
+
+      this.controller.set('transitionModal', false);
+      controller.set('isEditMode', false);
+      controller.get('model').rollbackAttributes();
+
+      transition.retry();
+    });
   },
 
   actions: {
-
-    deleteContact(contact) {
-      
-      // TODO: need to replace this with a better modal
-      const confirmation = confirm('Are you sure you want to delete the record?');
-
-      if (confirmation) {
-
-        contact.destroyRecord().then(() => {
-          this.transitionTo('contacts');
-        });
-      }
-    },
 
     willTransition(transition) {
 
@@ -39,17 +47,10 @@ export default Ember.Route.extend({
       // check if there are unsaved changes to the model and warn the user
       if (this.controller.get('model').get('hasDirtyAttributes')) {
 
-        // TODO: need to replace this with a better modal
-        let confirmation = confirm('Are you sure you want to discard your changes?');
+        this.controller.set('transitionModal', true);
+        this.controller.set('transition', transition);
+        transition.abort();
 
-        if (confirmation) {
-
-          this.controller.set('isEditMode', false);
-          this.controller.get('model').rollbackAttributes();
-
-        } else {
-          transition.abort();
-        }
       } else {
 
         this.controller.set('isEditMode', false);

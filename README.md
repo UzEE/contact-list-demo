@@ -78,16 +78,16 @@ I'm tracking the progress of the app here.
 - [x] Handle responsiveness issues for small screens.
   - [x] Works on tablets.
   - [x] Works on phones.
-- [ ] Create an image crop and upload component.
+- [x] Create an image crop and upload component.
   - [x] Show default (randomly generated) avatar image if no image uploaded.
-  - [ ] Implement a component in a modal to handle picture upload and cropping 
+  - [x] Implement a component in a modal to handle picture upload and cropping 
         workflow.
-  - [ ] Add cropping logic (using `canvas`) or a library to provide a cropping interface.
-  - [ ] Implement a file uploader to our custom backend server (possibly using 
+  - [x] Add cropping logic (using `canvas`) or a library to provide a cropping interface.
+  - [x] Implement a file uploader to our custom backend server (possibly using 
         native `FormData`).
-  - [ ] Add support for drag / drop pictures (nice to have).
+  - [x] Add support for drag / drop pictures (nice to have).
 - [x] Refactor code to make sure we follow Ember.js practices.
-- [ ] Use a better Modal component than `confirm`.
+- [x] Use a better Modal component than `confirm`.
 - [ ] Load occupation enum list from server.
 - [ ] Write unit and acceptance tests.
 - [ ] Improve error handling and responses.
