@@ -23,8 +23,6 @@ module.exports = {
         .then(contact => {
 
           contact.avatarUrl = `${sails.getBaseUrl()}/pictures/${path.basename(files[0].fd)}`;
-          // contact['avatar-url'] = `${sails.getBaseUrl()}/pictures/${path.basename(files[0].fd)}`;
-          // contact['avatar-url'] = contact.avatarUrl = contact['avatar-url'];
 
           contact.save((err) => {
 

@@ -5,6 +5,13 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
+const fs = require('fs');
+const path = require('path');
+
+function deleteAvatarFromDisk(avatarPath) {
+  fs.unlink(avatarPath);
+}
+
 module.exports = {
 
   schema: true,
@@ -45,6 +52,18 @@ module.exports = {
       type: 'string',
       url: true
     }
-  }
-};
+  },
 
+  // afterDestroy: function (contacts, cb) {
+
+  //   for (const contact of contacts) {
+
+  //     if (!contact.avatarUrl) continue;
+
+  //     const picture = path.resolve(sails.config.appPath, 'assets/images/uploads', contact.avatarUrl.substring(contact.avatarUrl.lastIndexOf('/') + 1));
+  //     deleteAvatarFromDisk(picture);
+  //   }
+
+  //   cb();
+  // }
+};
