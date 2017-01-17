@@ -38,17 +38,22 @@ body {
   margin: 20px 0;
 }
 
+.thumbnail > img {
+  width: 100%;
+  height: auto;
+}
+
 .file-picker.single.over .jumbotron {
   background: #dff0d8;
 }
 
-.file-picker__preview {
-  text-align: center;
+.picture-crop-preview {
+  height: 400px;
+  display: none;
 }
 
-.file-picker__preview img {
-  width: 66%;
-  height: auto;
+.picture-crop-preview.croppie-container {
+  display: block;
 }
 
 @media only screen and (max-width: 767px) {

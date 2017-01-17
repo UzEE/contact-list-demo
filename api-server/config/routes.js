@@ -34,7 +34,10 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+
+  'POST /contacts/:id/picture': 'ContactController.uploadPicture',
+  'GET /pictures/:picture': 'ContactController.getPicture'
 
   /***************************************************************************
   *                                                                          *

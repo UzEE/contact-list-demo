@@ -22,7 +22,8 @@ module.exports = function(environment) {
       // when it is created
 
       // This is where your models will be served from. Expects a JSON API.
-      API_HOST: 'http://localhost:1337'
+      API_HOST: 'http://localhost:1337',
+      PICTURE_UPLOAD_URL: '/contacts/__id__/picture'
     }
   };
 

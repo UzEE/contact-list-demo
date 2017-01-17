@@ -45,12 +45,16 @@
     <div class="row">
       <div class="col-xs-12">
 
-        {{#file-picker accept="image/*" fileLoaded=fileLoaded progress=false}}
+        {{#unless showCroppie}}
+        {{#file-picker accept="image/*" fileLoaded="fileLoaded" preview=false progress=false readAs="readAsDataURL"}}
             <div class="jumbotron bg-primary text-center">
               <h2>Drop the Picture Here</h2>
               <h4>or just click me to pick the photo!</h4>
             </div>
         {{/file-picker}}
+        {{/unless}}
+
+        <div class="picture-crop-preview"></div>
 
       </div>
     </div>
@@ -61,7 +65,7 @@
     onClose=(action "cancelUpload") 
     closeTitle="Cancel" 
     submitTitle=uploadLabel 
-    submitDisabled=allowUpload
+    submitDisabled=(if allowUpload false)
   }}
 
  {{/bs-modal}}
