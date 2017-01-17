@@ -38,6 +38,19 @@ body {
   margin: 20px 0;
 }
 
+.file-picker.single.over .jumbotron {
+  background: #dff0d8;
+}
+
+.file-picker__preview {
+  text-align: center;
+}
+
+.file-picker__preview img {
+  width: 66%;
+  height: auto;
+}
+
 @media only screen and (max-width: 767px) {
 
   .sidebar {
